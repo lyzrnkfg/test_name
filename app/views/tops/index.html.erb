@@ -1,0 +1,50 @@
+<%# provide(:title, "XXXX") %>
+<br><br>
+<div class="row">
+  <h4><%= t('views.top.outside_engineer_manage')%></h4>
+</div>
+<div class="row">
+  <% if @function_codes.include?(FunctionCodes::OUTSIDE_ENGINEER_MANAGE.code) or @function_codes.include?(FunctionCodes::OUTSIDE_ENGINEER_DISPLAY.code) %>
+      <div class="col-sm-2 col-md-2">
+        <%= link_to MainmenuButtons::OUTSIDE_ENGINEER_DISPLAY.name, outside_engineers_path(clear_session: "outside_engineer_session"), class: "btn btn-info btn-sm white_size", style: "WIDTH: 170px; HEIGHT:32px;" %>
+      </div>
+  <% end %>
+  <% if @function_codes.include?(FunctionCodes::OUTSIDE_ENGINEER_MANAGE.code) %>
+      <div class="col-sm-2 col-md-2"><%= link_to MainmenuButtons::OUTSIDE_ENGINEER_REGISTER.name, new_outside_engineer_path , class: "btn btn-info btn-sm white_size", style: "WIDTH: 170px; HEIGHT:32px;" %></div>
+  <% end %>
+  <% if @function_codes.include?(FunctionCodes::OUTSIDE_ENGINEER_MANAGE.code) %>
+      <div class="col-sm-2 col-md-2"><%= link_to MainmenuButtons::OUTSIDE_ENGINEER_BULK_REGISTER.name, import_outside_engineers_path , class: "btn btn-info btn-sm white_size", style: "WIDTH: 170px; HEIGHT:32px;" %></div>
+  <% end %>
+</div>
+<% if (@function_codes.include?(FunctionCodes::AUTHORITY_MASTER.code) \
+      or @function_codes.include?(FunctionCodes::ROLE_MASTER.code) \
+      or @function_codes.include?(FunctionCodes::CLIENT_MANAGE.code) \
+      or @function_codes.include?(FunctionCodes::USER_MANAGE.code) \
+      or @function_codes.include?(FunctionCodes::USER_DISPLAY.code) \
+      or @function_codes.include?(FunctionCodes::AVAILABLE_RANGES_MANAGE.code) \
+      or @function_codes.include?(FunctionCodes::AVAILABLE_RANGES_DISPLAY.code)) then %>
+    <br><br>
+    <div class="row">
+      <h4><%= t('views.top.master_manage')%></h4>
+    </div>
+    <div class="row">
+      <% if @function_codes.include?(FunctionCodes::AUTHORITY_MASTER.code) %>
+          <div class="col-sm-2 col-md-2"><%= link_to MainmenuButtons::AUTHORITY_MASTER.name, authorities_path, class: "btn btn-info btn-sm white_size", style: "WIDTH: 170px; HEIGHT:32px;" %></div>
+      <% end %>
+      <% if @function_codes.include?(FunctionCodes::ROLE_MASTER.code) %>
+          <div class="col-sm-2 col-md-2"><%= link_to MainmenuButtons::ROLE_MASTER.name, roles_path, class: "btn btn-info btn-sm white_size", style: "WIDTH: 170px; HEIGHT:32px;" %></div>
+      <% end %>
+      <% if @function_codes.include?(FunctionCodes::CLIENT_MANAGE.code) %>
+          <div class="col-sm-2 col-md-2"><%= link_to MainmenuButtons::CLIENT_MASTER.name , clients_path, class: "btn btn-info btn-sm white_size", style: "WIDTH: 170px; HEIGHT:32px;" %></div>
+      <% end %>
+    </div>
+    <br><br>
+    <div class="row">
+      <% if @function_codes.include?(FunctionCodes::USER_MANAGE.code) or @function_codes.include?(FunctionCodes::USER_DISPLAY.code) %>
+          <div class="col-sm-2 col-md-2"><%= link_to MainmenuButtons::USER_MANAGE.name, users_path(clear_session: "user_session"), class: "btn btn-info btn-sm white_size", style: "WIDTH: 170px; HEIGHT:32px;"  %></div>
+      <% end %>
+      <% if @function_codes.include?(FunctionCodes::AVAILABLE_RANGES_MANAGE.code) or @function_codes.include?(FunctionCodes::AVAILABLE_RANGES_DISPLAY.code) %>
+          <div class="col-sm-2 col-md-2 "><%= link_to MainmenuButtons::AVAILABLE_RANGES_MANAGE.name, available_ranges_path(clear_session: "available_session"), class: "btn btn-info btn-sm white_size", style: "WIDTH: 170px; HEIGHT:32px;" %></div>
+      <% end %>
+    </div>
+<% end %>
